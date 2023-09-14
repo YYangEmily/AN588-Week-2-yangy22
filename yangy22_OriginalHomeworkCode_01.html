@@ -485,10 +485,10 @@ dta</code></pre>
 <h2>Challenge 3</h2>
 <p><br></p>
 <pre class="r"><code>a &lt;- array(data = 400:1, dim = c(5,5,4,4))
-#All 4D specified so return 1 value
+#All 4 coordinates specified so return 1 value
 a[1, 1, 1, 2]</code></pre>
 <pre><code>## [1] 300</code></pre>
-<pre class="r"><code># 3 Dimensions specified and returns all possibilites of the 4th
+<pre class="r"><code># 3 coordinates specified and returns all possibilities of the 4th
 a[2, 3, 2,]</code></pre>
 <pre><code>## [1] 364 264 164  64</code></pre>
 <pre class="r"><code># 2 dimensions have range so 2D
@@ -607,6 +607,7 @@ df</code></pre>
 l &lt;- as.logical(df[,c(2)])
 #Convert column 3 to factor
 f &lt;- as.factor(df[,c(3)])
+#str tells you structure
 str(l)</code></pre>
 <pre><code>##  logi [1:5] FALSE TRUE TRUE FALSE FALSE</code></pre>
 <pre class="r"><code>str(f)</code></pre>
