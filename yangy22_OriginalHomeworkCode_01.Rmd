@@ -4,7 +4,7 @@ author: "Emily Yang"
 date: "`r Sys.Date()`"
 output:
   rmarkdown::html_document:
-    theme: journal
+    theme: cerulean
 ---
 
 ```{r setup, include=FALSE}
@@ -24,16 +24,16 @@ library(dplyr)
 library(tidyr)
 library(stringr)
 
-# Single vector
+# Enter the sentence. It is one object. 
 v <- ("Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather on which a mirror and a razor lay crossed blah blah")
-#Sub strings
+#Split the vector v using str_split. I'm telling it to split "space" so every word is split apart. 
 x <- str_split(v, " ")
 x
-# Make the string into 8x3 matrix. 
+# Make the string into 8x3 matrix. Need to add 2 words to the sentence becasue 22 not divisible by 3. 
 m <- matrix(data = x[[1]] , nrow = 8, ncol = 3, byrow = TRUE)
 m
-# Pull out the third column which contains every third word
-b <- m[,c(3)]
+# Pull out the third column which contains every third word. Ignoring the last blah
+b <- m[c(1:7),c(3)]
 b
 ```
 ## Challenge 2
@@ -41,15 +41,22 @@ b
 ```{r Challenge 2}
 m <- matrix(data = 1:80, nrow = 8, ncol = 10, byrow = FALSE)
 m
-# Select columns 2,3,6. Comma before c
+# Select columns 2,3,6. Comma before c 
 x <- m[,c(2,3,6)]
 x
 # Select rows 6 to 8. Comma after c
 x <- m[c(6:8),]
 x
-# Select row 2, column 2 to row 6, column 9. (2,2) to (6,9)
+# Select row 2, column 2 to row 6, column 9. Select (2,2) to (6,9). Tell it between what rows and between what columns to take. 
 x <- m[c(2:6),c(2:9)]
 x
+
+#Not used but could be useful in the future. Selecting data from matrix of different lengths. Make matrix from Row 2 and Column 9. 
+library(qpcR)
+x <- m[,c(9)]
+y <- m[c(2),]
+dta <- qpcR:::cbind.na(x, y) #https://statisticsglobe.com/cbind-and-rbind-vectors-with-different-length-in-r
+dta
 ```
 ## Challenge 3
 <br> 
@@ -64,7 +71,7 @@ a[1:5, 1:5, 3, 3]
 ```
 
 ## Challenge 4 
-<br>
+<br> Nested list but it looks horrible
 ```{r Challenge 4, }
 Lemuroidea <- c("Cheirogaleidae", "Lepilemuridae", "Indriidae", "Lemuridae",
     "Daubentoniidae")
@@ -96,8 +103,13 @@ Phylogeny
 m3 <- matrix(data = c(3, 0, 1 ,23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2), nrow = 5, ncol = 3, byrow = TRUE)
 
 df <- m3
+# Rename columns and rows for fun 
+colnames(df) <- c("Column_1","Column_2","Column_3")
+rownames(df) <- c("Row_1","Row_2","Row_3", "Row_4","Row_5")
 df
+#Convert column 2 to logic
 l <- as.logical(df[,c(2)])
+#Convert column 3 to factor
 f <- as.factor(df[,c(3)])
 str(l)
 str(f)
