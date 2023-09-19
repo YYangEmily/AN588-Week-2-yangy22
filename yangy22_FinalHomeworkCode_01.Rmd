@@ -1,0 +1,123 @@
+---
+title: "yangy22_FinalHomeworkCode_01"
+author: "Emily Yang"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_document:
+    theme: cerulean
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Working with Other Data Structures
+## Challenge 1
+<br> 
+Load libraries. 
+Check package is downloaded: In Console x <- system.file(package = "tidyr") <br> Then type x. Should spit out where the package is installed. 
+<br> [1] "/Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/library/tidyr" or<br> [1] "" = package not installed.<br>
+https://hohenfeld.is/posts/check-if-a-package-is-installed-in-r/
+
+```{r Challenge 1}
+library(dplyr)
+library(tidyr)
+library(stringr)
+
+# Enter the sentence. It is one object. 
+v <- ("Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather on which a mirror and a razor lay crossed blah blah")
+#Split the vector v using str_split. I'm telling it to split "space" so every word is split apart. 
+x <- str_split(v, " ")
+x
+# Make the string into 8x3 matrix. Need to add 2 words to the sentence becasue 22 not divisible by 3. 
+m <- matrix(data = x[[1]] , nrow = 8, ncol = 3, byrow = TRUE)
+m
+# Pull out the third column which contains every third word. Ignoring the last blah
+b <- m[c(1:7),c(3)]
+b
+```
+## Challenge 2
+<br> 
+```{r Challenge 2}
+m <- matrix(data = 1:80, nrow = 8, ncol = 10, byrow = FALSE)
+m
+# Select columns 2,3,6. Comma before c.<br>  https://stats.stackexchange.com/questions/10225/extracting-multiple-columns-from-a-matrix-in-r 
+x <- m[,c(2,3,6)]
+x
+# Select rows 6 to 8. Comma after c
+x <- m[c(6:8),]
+x
+# Select row 2, column 2 to row 6, column 9. Select (2,2) to (6,9). Tell it between what rows and between what columns to take. 
+x <- m[c(2:6),c(2:9)]
+x
+
+#Not used but could be useful in the future. Selecting data from matrix of different lengths. Make matrix from Row 2 and Column 9. 
+library(qpcR)
+x <- m[,c(9)]
+y <- m[c(2),]
+dta <- qpcR:::cbind.na(x, y) #https://statisticsglobe.com/cbind-and-rbind-vectors-with-different-length-in-r
+dta
+```
+## Challenge 3
+<br> 
+```{r Challenge 3}
+a <- array(data = 400:1, dim = c(5,5,4,4))
+#All 4 coordinates specified so return 1 value
+a[1, 1, 1, 2]
+# 3 coordinates specified and returns all possibilities of the 4th
+a[2, 3, 2,]
+# 2 dimensions have range so 2D
+a[1:5, 1:5, 3, 3]
+```
+
+## Challenge 4 
+<br> Nested list but it looks horrible
+```{r Challenge 4, }
+Lemuroidea <- c("Cheirogaleidae", "Lepilemuridae", "Indriidae", "Lemuridae",
+    "Daubentoniidae")
+Lorisoidea <- c("Lorisidae", "Galagidae")
+Strepsirhini <- list(Lemuroidea, Lorisoidea)
+names(Strepsirhini) <- list("Lemuroidea", "Lorisoidea")
+Strepsirhini
+Platyrrhini <- c("Cebidae", "Atelidae", "Pitheciidae")
+Catarrhini <- c("Cercopithecidae", "Hylobatidae", "Hominidae")
+Anthropoidea <- list(Platyrrhini, Catarrhini)
+names(Anthropoidea) <- list("Platyrrhini", "Catarrhini")
+Anthropoidea
+Tarsioidea <- c("Tarsiidae")
+Haplorhini <- list(Anthropoidea, Tarsioidea)
+names(Haplorhini) <- list("Anthropoidea", "Tarsioidea")
+Haplorhini
+Primates <- list(Haplorhini, Strepsirhini)
+names(Primates) <- list("Haplorhini", "Strepsirhini") 
+Primates
+Phylogeny <- list(Primates) # Add an extra level so primates show up.
+names(Phylogeny) <- list("Primates")
+Phylogeny
+
+
+```
+## Challenge 5
+<br> 
+```{r Challenge 5}
+m3 <- matrix(data = c(3, 0, 1 ,23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2), nrow = 5, ncol = 3, byrow = TRUE)
+
+df <- m3
+# Rename columns and rows for fun 
+colnames(df) <- c("Column_1","Column_2","Column_3")
+rownames(df) <- c("Row_1","Row_2","Row_3", "Row_4","Row_5")
+df
+#Convert column 2 to logic
+l <- as.logical(df[,c(2)])
+#Convert column 3 to factor
+f <- as.factor(df[,c(3)])
+#str tells you structure
+str(l)
+str(f)
+```
+## Commentary 
+<br>
+1. I liked how other people used the seq() function to segment their code. I will experiment with it. I also liked seeing different commenting styles. I over explained in my comments because I know that I will forget quickly.<br>
+2. I didn't really have anything that needed improvements. Mainly it was the extra packages I loaded that caused issues when Amanda tried to run my code.<br>
+3. I had problems splitting the sentence in challenge 1 to a matrix of 8X3 because there were only 22 words. I went to office hours and got help on fixing it. <br>
+4. The comments helped me be more conscious of how I'm commenting on my work and other others.  
