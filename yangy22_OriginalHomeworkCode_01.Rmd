@@ -41,7 +41,7 @@ b
 ```{r Challenge 2}
 m <- matrix(data = 1:80, nrow = 8, ncol = 10, byrow = FALSE)
 m
-# Select columns 2,3,6. Comma before c 
+# Select columns 2,3,6. Comma before c.<br>  https://stats.stackexchange.com/questions/10225/extracting-multiple-columns-from-a-matrix-in-r 
 x <- m[,c(2,3,6)]
 x
 # Select rows 6 to 8. Comma after c
@@ -91,7 +91,7 @@ Haplorhini
 Primates <- list(Haplorhini, Strepsirhini)
 names(Primates) <- list("Haplorhini", "Strepsirhini") 
 Primates
-Phylogeny <- list(Primates)
+Phylogeny <- list(Primates) # Add an extra level so primates show up.
 names(Phylogeny) <- list("Primates")
 Phylogeny
 

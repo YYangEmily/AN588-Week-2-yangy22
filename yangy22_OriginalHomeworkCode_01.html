@@ -420,7 +420,7 @@ m</code></pre>
 ## [6,]    6   14   22   30   38   46   54   62   70    78
 ## [7,]    7   15   23   31   39   47   55   63   71    79
 ## [8,]    8   16   24   32   40   48   56   64   72    80</code></pre>
-<pre class="r"><code># Select columns 2,3,6. Comma before c 
+<pre class="r"><code># Select columns 2,3,6. Comma before c.&lt;br&gt;  https://stats.stackexchange.com/questions/10225/extracting-multiple-columns-from-a-matrix-in-r 
 x &lt;- m[,c(2,3,6)]
 x</code></pre>
 <pre><code>##      [,1] [,2] [,3]
@@ -562,7 +562,7 @@ Primates</code></pre>
 ## 
 ## $Strepsirhini$Lorisoidea
 ## [1] &quot;Lorisidae&quot; &quot;Galagidae&quot;</code></pre>
-<pre class="r"><code>Phylogeny &lt;- list(Primates)
+<pre class="r"><code>Phylogeny &lt;- list(Primates) # Add an extra level so primates show up.
 names(Phylogeny) &lt;- list(&quot;Primates&quot;)
 Phylogeny</code></pre>
 <pre><code>## $Primates
