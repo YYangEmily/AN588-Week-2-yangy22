@@ -7,10 +7,6 @@ output:
     theme: cerulean
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 # Working with Other Data Structures
 ## Challenge 1
 <br> 
