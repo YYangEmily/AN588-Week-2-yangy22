@@ -117,3 +117,5 @@ str(l)
 str(f)
 ## i think this is what i had done as well, besides naming the columns but good job! 
 ```
+
+*I listed a few errors from my end that was occurring but for the most part, this was a really good job and you had great detail in your explanations! It could be helpful to add subheadings to your chunks to further divide your work. Great job! 
